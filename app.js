@@ -143,7 +143,7 @@ app.get("/getOrders", async (req, res) => {
   }
 });
 
-
-app.listen(5001,()=>{
-    console.log("Node js sever started.");
-})
+const PORT = process.env.PORT || 5001; // use Render port or local fallback
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
