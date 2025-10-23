@@ -101,10 +101,10 @@ app.post("/OrderDetails",async(req,res) =>{
         ).join("\n");
 
         await transporter.sendMail({
-        from: userEmail,
+        from: process.env.VENDOR_EMAIL,
         to: process.env.VENDOR_EMAIL,
         subject: "🛒 New Order Received!",
-        text: `New order details:\n\n${itemList}\n\nTotal: $${getTotal}`,
+        text: `New order details:\n\n${itemList}\n\nTotal: $${getTotal}\n\nEmail: ${userEmail}`,
         });
         res.send({status: "ok", data:"Order Placed Successfully!"});
     }
